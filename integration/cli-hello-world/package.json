@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build -c dev",
+    "postbuild": "node ../../tools/source-map-overrides",
+    "serve": "http-server ./dist",
     "pretest": "ng version",
     "test": "ng test && yarn e2e --configuration=ci && yarn e2e --configuration=ci-production",
     "lint": "ng lint",
@@ -50,5 +52,16 @@
   "//resolutions-comment": "Ensure a single version of webdriver-manager which comes from root node_modules that has already run webdriver-manager update",
   "resolutions": {
     "**/webdriver-manager": "file:../../node_modules/webdriver-manager"
-  }
+  },
+  "sourcemapOverrides": [
+    {
+      "file": "./dist",
+      "output": "",
+      "sources": [],
+      "sourceRoot": [
+        "cli-hello-world/dist/[^.]+.js$ |  | ../",
+        "__ivy_ngcc__ |  | ../"
+      ]
+    }
+  ]
 }
