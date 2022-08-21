@@ -1,0 +1,158 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "IVY:packages/core/test/...",
+      "type": "shell",
+      "command": "${workspaceFolder}/node_modules/.bin/bazelisk",
+      "args": [
+        "test",
+        "--config=ivy",
+        "packages/core/test",
+        "packages/core/test/acceptance",
+        "packages/core/test/render3"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "VE:packages/core/test/...",
+      "type": "shell",
+      "command": "${workspaceFolder}/node_modules/.bin/bazelisk",
+      "args": [
+        "test",
+        "packages/core/test",
+        "packages/core/test/acceptance",
+        "packages/core/test/render3"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "IVY:packages/core/test/acceptance",
+      "type": "shell",
+      "command": "${workspaceFolder}/node_modules/.bin/bazelisk",
+      "args": [
+        "test",
+        "--config=ivy",
+        "packages/core/test/acceptance"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "VE:packages/core/test/acceptance",
+      "type": "shell",
+      "command": "${workspaceFolder}/node_modules/.bin/bazelisk",
+      "args": [
+        "test",
+        "packages/core/test/acceptance"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "IVY:packages/core/test",
+      "type": "shell",
+      "command": "${workspaceFolder}/node_modules/.bin/bazelisk",
+      "args": [
+        "test",
+        "--config=ivy",
+        "packages/core/test"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "VE:packages/core/test",
+      "type": "shell",
+      "command": "${workspaceFolder}/node_modules/.bin/bazelisk",
+      "args": [
+        "test",
+        "packages/core/test"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "IVY:packages/core/test/render3",
+      "type": "shell",
+      "command": "${workspaceFolder}/node_modules/.bin/bazelisk",
+      "args": [
+        "test",
+        "--config=ivy",
+        "packages/core/test/render3"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "yarn: serve - integration/cli-hello-world",
+      "type": "npm",
+      "script": "serve",
+      "path": "integration/cli-hello-world/",
+      "detail": "http-server cli-hello-world",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^([^\\s].*)\\((\\d+|\\d+,\\d+|\\d+,\\d+,\\d+,\\d+)\\):\\s+(error|warning|info)\\s+(TS\\d+)\\s*:\\s*(.*)$",
+          "file": 1,
+          "location": 2,
+          "severity": 3,
+          "code": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting up http-server",
+          "endsPattern": "Available on"
+        }
+      }
+    },
+    {
+      "label": "Terminate All Tasks",
+      "command": "echo ${input:terminate}",
+      "type": "shell",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "terminateAll"
+    }
+  ]
+}
